@@ -16,26 +16,21 @@ function createImageNode(url){
 }
 
 
-// async function Main(file) {
-//   console.log(await toBase64(file));
-// }
-
-// const toBase64 = file => new Promise((resolve, reject) => {
-//   const reader = new FileReader();
-//   reader.onload = () => {
-//     const img = new Image
-//     img.onload = () => resolve(img);
-//     img.src = reader.result.toString();
-//   }
-//   reader.onerror = error => reject(error);
-//   reader.readAsDataURL(file);
-// });
+const toBase64 = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.onload = () => {
+    resolve(reader.result);
+  }
+  reader.onerror = error => reject(error);
+  reader.readAsDataURL(file);
+});
 
 
-function createImageFromFile(fileExplorer, title, desc){
-  const file = fileSelector.files[0];
-  Main(file)
-  //return await toBase64(file);
+async function createImageFromFile(fileExplorer, title, desc){
+  let file = fileExplorer.files[0]
+  let url = await toBase64(file)
+  let img = createImage(url, title, desc)
+  return img
 }
 
 function loadPages(arrayImages, paginas){

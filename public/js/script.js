@@ -40,7 +40,7 @@ selector.addEventListener('change', (e) => {
 })
 
 
-submitButton.addEventListener('click', (e) => {
+submitButton.addEventListener('click', async (e) => {
   let title = imgTitle.value
   let desc = imgDesc.value
   let url = urlInput.value
@@ -61,7 +61,7 @@ submitButton.addEventListener('click', (e) => {
     localStorage.setItem("images", JSON.stringify(arrayImages))
   }else{
     if(!fileExplorer.files[0]) return
-    let img = createImageFromFile(fileExplorer, title, desc)
+    let img = await createImageFromFile(fileExplorer, title, desc)
     arrayImages.push(img)
     renderImages(arrayImages, pagina, gallery)
     localStorage.setItem("images", JSON.stringify(arrayImages))
@@ -71,6 +71,7 @@ submitButton.addEventListener('click', (e) => {
   imgTitle.value = ''
   imgDesc.value = ''
   urlInput.value = ''
+  fileExplorer.value = ''
 })
 
 pageItems.forEach(page => {
