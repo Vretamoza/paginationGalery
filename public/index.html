@@ -7,35 +7,43 @@
   <link rel="stylesheet" href="css/styles.css">
   <title>Galería con Paginación</title>
 </head>
-<body class="relative flex flex-col items-center min-h-screen font-roboto">
+<body class="relative items-center min-h-screen font-roboto">
   <!-- Header -->
   <header class="flex justify-center items-center w-full h-16 border-b-2 bg-indigo-500">
     <div class="text-white text-2xl font-bold"> Galería de Fotos</div>
   </header>
 
   <!-- Main -->
-  <div class="mt-10 p-10 flex flex-row space-x-20 bg-green-200">
+  <div class="w-full h-[calc(100vh-64px)] p-5 flex flex-row space-x-10 justify-center items-start">
 
     <!-- Galery -->
-    <div class="h-40 w-40 bg-indigo-500">
-      <div class="images-container">
-        <ul>
-        </ul>
+    <div class="bg-indigo-500 w-6/12 h-5/12 p-10 rounded-lg gap-1">
+      <div id="gallery" class="grid grid-cols-3 grid-rows-2 gap-1">
       </div>
-      <div class="flex flex-row">
-        <button>Anterior</button>
-        <ul></ul>
-        <button>Siguiente</button>
+      <div class="flex flex-row p-2 mt-5 text-white gap-1 justify-center space-x-3">
+        <button id="last-page" class="font-black">Anterior</button>
+        <ul id="paginas" class="flex flex-row space-x-3"></ul>
+        <button id="next-page" class="font-black">Siguiente</button>
       </div>
     </div>
 
     <!-- Submit -->
     <div class="flex flex-col gap-3 border-2 border-indigo-500 px-10 py-8 rounded-lg">
-      <input type="text" placeholder="Título" class="py-2 px-3 border-2 border-indigo-500 focus:outline-none focus:border-indigo-700 rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500">
-      <input type="text" placeholder="Descripción" class="py-2 px-3 border-2 border-indigo-500 focus:outline-none focus:border-indigo-700 rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500">
-      <button class="py-3 px-8 bg-indigo-400 rounded-md">Agregar imagen local</button>
+      <input id = "title" type="text" placeholder="Título" class="py-px px-3 border-2 border-indigo-500 focus:outline-none focus:border-indigo-700 rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500">
+      <input id="desc" type="text" placeholder="Descripción" class="py-px px-3 border-2 border-indigo-500 focus:outline-none focus:border-indigo-700 rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500">
+      <input id="urlInput" type="text" placeholder="URL" class="py-px px-3 border-2 border-indigo-500 focus:outline-none focus:border-indigo-700 rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500 hidden">
+
+      <input type="file" id="file-explorer" />
+
+      <div class="flex flex-row space-x-2">
+        <select name="load-options" id="load-options" class="py-2 bg-indigo-400 rounded-md">
+          <option value="local">Upload from local</option>
+          <option value="url">Upload from url</option>
+        </select>
+        <button id="sumbit-image" class="bg-indigo-400 rounded-md p-1.5"> Submit </button>
+      </div>
     </div>
   </div>
-
+  <script type="module" src="./js/script.js"></script>
 </body>
 </html>
