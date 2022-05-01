@@ -3,6 +3,7 @@ import {
   addNewPage,
   renderImages,
   createImageFromFile,
+  loadPages
 } from './utils.js'
 
 let gallery = document.querySelector('#gallery')
@@ -18,15 +19,14 @@ let nextButton = document.querySelector('#next-page')
 let pageItems = paginas.childNodes
 
 let arrayImages = []
-let pagina = 0
 
-// let images = localStorage.getItem('images')
-// if(images){
-//   arrayImages = JSON.parse(images)
-// }
-// console.log(arrayImages)
-// renderImagesFromLS(arrayImages, gallery)
-
+let images = localStorage.getItem('images')
+if(images){
+  arrayImages = JSON.parse(images)
+}
+console.log(arrayImages)
+renderImages(arrayImages, 1, gallery)
+let pagina = loadPages(arrayImages, paginas)
 
 selector.addEventListener('change', (e) => {
   if (selector.value == 'url'){

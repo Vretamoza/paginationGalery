@@ -1,6 +1,3 @@
-const IMG_TEMPLATE = new Image
-IMG_TEMPLATE.className = 'w-56 h-56'
-
 
 function createImage(url, title, desc){
   const newImage = {
@@ -11,27 +8,47 @@ function createImage(url, title, desc){
   return newImage
 }
 
-
-async function Main(file) {
-  console.log(await toBase64(file));
+function createImageNode(url){
+  let img = document.createElement('img')
+  img.src = url
+  img.className = 'w-56 h-56'
+  return img
 }
 
-const toBase64 = file => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.onload = () => {
-    const img = new Image
-    img.onload = () => resolve(img);
-    img.src = reader.result.toString();
-  }
-  reader.onerror = error => reject(error);
-  reader.readAsDataURL(file);
-});
+
+// async function Main(file) {
+//   console.log(await toBase64(file));
+// }
+
+// const toBase64 = file => new Promise((resolve, reject) => {
+//   const reader = new FileReader();
+//   reader.onload = () => {
+//     const img = new Image
+//     img.onload = () => resolve(img);
+//     img.src = reader.result.toString();
+//   }
+//   reader.onerror = error => reject(error);
+//   reader.readAsDataURL(file);
+// });
 
 
 function createImageFromFile(fileExplorer, title, desc){
   const file = fileSelector.files[0];
   Main(file)
-  return await toBase64(file);
+  //return await toBase64(file);
+}
+
+function loadPages(arrayImages, paginas){
+  let tam = arrayImages.length
+  if(tam == 0) return 0
+  let pages = (tam % 6 == 0)? Math.trunc(tam/6): Math.trunc(tam/6) + 1
+  for (let i = 1; i <= pages; i++) {
+    let page = document.createElement('li')
+    page.className = 'page'
+    page.innerHTML = `<a href="#">${i}</a>`
+    paginas.appendChild(page)
+  }
+  return pages
 }
 
 
@@ -49,11 +66,11 @@ function renderImages(arrayImages, page, gallery){
   const final = page * 6
   for(let i = initial; i < final; i++){
     if(arrayImages[i]){
-      IMG_TEMPLATE.src = arrayImages[i].imageURL
-      gallery.appendChild(IMG_TEMPLATE)
+      let img = createImageNode(arrayImages[i].imageURL)
+      gallery.appendChild(img)
     }
   }
 }
 
 
-export  {createImage, addNewPage, renderImages, createImageFromFile}
+export  {createImage, addNewPage, renderImages, createImageFromFile, loadPages}
