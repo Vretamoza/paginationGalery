@@ -48,7 +48,7 @@ function loadPages(arrayImages, paginas){
     page.innerHTML = `<a href="#">${i}</a>`
     paginas.appendChild(page)
   }
-  return pages
+  return 1
 }
 
 

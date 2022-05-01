@@ -24,7 +24,7 @@ let images = localStorage.getItem('images')
 if(images){
   arrayImages = JSON.parse(images)
 }
-console.log(arrayImages)
+
 renderImages(arrayImages, 1, gallery)
 let pagina = loadPages(arrayImages, paginas)
 
@@ -67,16 +67,17 @@ submitButton.addEventListener('click', (e) => {
     localStorage.setItem("images", JSON.stringify(arrayImages))
   }
 
-  pageItems.forEach(page => {
-    page.addEventListener('click', (e) => {
-      renderImages(arrayImages, page.textContent, gallery)
-      pagina = page.textContent
-    })
-  })
 
   imgTitle.value = ''
   imgDesc.value = ''
   urlInput.value = ''
+})
+
+pageItems.forEach(page => {
+  page.addEventListener('click', (e) => {
+    renderImages(arrayImages, page.textContent, gallery)
+    pagina = page.textContent
+  })
 })
 
 lastButton.addEventListener('click', (e) => {
