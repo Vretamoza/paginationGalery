@@ -47,7 +47,7 @@ submitButton.addEventListener('click', async (e) => {
 
   if(!title || !desc) return alert('Todos los campos son obligatorios')
 
-  if(arrayImages.length % 6 == 0){
+  if(arrayImages.length % 8 == 0){
     pagina++
     let page = addNewPage(pagina)
     paginas.appendChild(page)

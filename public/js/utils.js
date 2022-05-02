@@ -11,7 +11,7 @@ function createImage(url, title, desc){
 function createImageNode(url){
   let img = document.createElement('img')
   img.src = url
-  img.className = 'w-56 h-56'
+  img.className = 'w-[300px] h-80'
   return img
 }
 
@@ -36,7 +36,7 @@ async function createImageFromFile(fileExplorer, title, desc){
 function loadPages(arrayImages, paginas){
   let tam = arrayImages.length
   if(tam == 0) return 0
-  let pages = (tam % 6 == 0)? Math.trunc(tam/6): Math.trunc(tam/6) + 1
+  let pages = (tam % 8 == 0)? Math.trunc(tam/8): Math.trunc(tam/8) + 1
   for (let i = 1; i <= pages; i++) {
     let page = document.createElement('li')
     page.className = 'page'
@@ -57,8 +57,8 @@ function addNewPage(pagina){
 
 function renderImages(arrayImages, page, gallery){
   gallery.textContent = '';
-  const initial = ((page - 1) * 6)
-  const final = page * 6
+  const initial = ((page - 1) * 8)
+  const final = page * 8
   for(let i = initial; i < final; i++){
     if(arrayImages[i]){
       let img = createImageNode(arrayImages[i].imageURL)
