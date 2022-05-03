@@ -10,6 +10,7 @@
       crossorigin="anonymous"
     ></script>
     <title>Gallery</title>
+    <link rel="icon" type="image/x-icon" href="assets/icons8-g-16.png">
   </head>
 
   <body class="flex flex-col">
@@ -44,10 +45,10 @@
             id="urlInput"
             type="text"
             placeholder="URL"
-            class="py-px px-3 border-2 border-indigo-500 focus:outline-none focus:border-indigo-700 rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500 hidden"/>
+            class="py-2 px-3 border-0 focus:outline-none rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500 hidden"/>
           <input type="file" id="file-explorer" class="rounded bg-white" />
         </div>
-        <button id="sumbit-image" class="bg-indigo-400 rounded-md p-1.5 mx-5 font-black text-white">
+        <button id="sumbit-image" class="bg-indigo-500 rounded-md p-1.5 mx-5 font-black text-white">
           Submit
         </button>
       </aside>
@@ -56,8 +57,7 @@
         <div id="gallery" class="grid grid-cols-4 grid-rows-2 gap-1"></div>
 
         <div class="bg-white w-full">
-          <div
-            class="flex flex-row py-2 text-black gap-1 justify-center space-x-3">
+          <div id="pagination" class="flex flex-row py-2 text-black gap-1 justify-center space-x-3">
             <button id="last-page" class="font-black text-2xl">
               <i class="fa-solid fa-arrow-left-long"></i>
             </button>

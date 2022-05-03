@@ -16,6 +16,7 @@ let selector = document.querySelector('#load-options')
 let submitButton = document.querySelector('#sumbit-image')
 let lastButton = document.querySelector('#last-page')
 let nextButton = document.querySelector('#next-page')
+let pagination = document.querySelector('#pagination')
 let pageItems = paginas.childNodes
 
 let arrayImages = []
@@ -27,6 +28,10 @@ if(images){
 
 renderImages(arrayImages, 1, gallery)
 let pagina = loadPages(arrayImages, paginas)
+
+if(pagina == 0){
+  pagination.classList.add('hidden')
+}
 
 selector.addEventListener('change', (e) => {
   if (selector.value == 'url'){
@@ -50,6 +55,9 @@ submitButton.addEventListener('click', async (e) => {
     pagina++
     let page = addNewPage(pagina)
     paginas.appendChild(page)
+  }
+  if(pagina > 1){
+    pagination.classList.remove('hidden')
   }
 
   if(selector.value == 'url'){
