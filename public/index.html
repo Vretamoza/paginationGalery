@@ -1,48 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="https://kit.fontawesome.com/af4dde0aec.js" crossorigin="anonymous"></script>
-  <title>Galería con Paginación</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/af4dde0aec.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Gallery</title>
+  </head>
 
-<body class="flex flex-row">
+  <body class="flex flex-col">
+    <div class="flex flex-row w-full h-[94vh]">
+      <aside class="w-80 flex flex-col bg-indigo-200" aria-label="Sidebar">
+        <div
+          class="text-black text-4xl font-bold p-10 font-['oleo'] items-center justify-center text-center"
+        >
+          <!-- Gallery -->
+          <img src="assets/logo.png" alt="" />
+        </div>
+        <select
+          name="load-options"
+          id="load-options"
+          class="text-white bg-indigo-500 hover:bg-indigo-400 focus:outline-none font-bold rounded-lg text-lg px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mx-6 font-['oleo'] border-0">
+          <option value="local" class="font-bold">Upload from local</option>
+          <option value="url" class="font-bold">Upload from URL</option>
+        </select>
 
-  <aside class="w-80 flex flex-col bg-gray-200" aria-label="Sidebar">
-    <div class="text-black text-4xl font-bold p-7 font-['oleo'] items-center justify-center text-center">Gallery</div>
-    <select name="load-options" id="load-options" class="text-white bg-indigo-500 hover:bg-indigo-400 focus:outline-none font-bold rounded-lg text-lg px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mx-6 font-['oleo'] border-0">
-      <option value="local" class="font-bold">Upload from local</option>
-      <option value="url" class="font-bold">Upload from URL</option>
-    </select>
+        <div id="info" class="flex flex-col gap-4 px-10 py-5 rounded-lg mt-5">
+          <input
+            id="title"
+            type="text"
+            placeholder="Título"
+            class="py-2 px-3 border-0 focus:outline-none focus:border-indigo-700 rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500"/>
+          <input
+            id="desc"
+            type="text"
+            placeholder="Descripción"
+            class="py-2 px-3 border-0 focus:outline-none focus:border-indigo-700 rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500"/>
+          <input
+            id="urlInput"
+            type="text"
+            placeholder="URL"
+            class="py-px px-3 border-2 border-indigo-500 focus:outline-none focus:border-indigo-700 rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500 hidden"/>
+          <input type="file" id="file-explorer" class="rounded bg-white" />
+        </div>
+        <button id="sumbit-image" class="bg-indigo-400 rounded-md p-1.5 mx-5 font-black text-white">
+          Submit
+        </button>
+      </aside>
 
-    <div class="flex flex-col gap-4 px-10 py-8 rounded-lg mt-5">
-      <input id = "title" type="text" placeholder="Título" class="py-px px-3 border-2 border-indigo-500 focus:outline-none focus:border-indigo-700 rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500">
-      <input id="desc" type="text" placeholder="Descripción" class="py-px px-3 border-2 border-indigo-500 focus:outline-none focus:border-indigo-700 rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500">
-      <input id="urlInput" type="text" placeholder="URL" class="py-px px-3 border-2 border-indigo-500 focus:outline-none focus:border-indigo-700 rounded-lg text-indigo-500 font-medium placeholder:text-indigo-500 hidden">
-      <input type="file" id="file-explorer" />
+      <div class="flex flex-col w-full h-[90vh] justify-between">
+        <div id="gallery" class="grid grid-cols-4 grid-rows-2 gap-1"></div>
+
+        <div class="bg-white w-full">
+          <div
+            class="flex flex-row py-2 text-black gap-1 justify-center space-x-3">
+            <button id="last-page" class="font-black text-2xl">
+              <i class="fa-solid fa-arrow-left-long"></i>
+            </button>
+            <ul id="paginas" class="flex flex-row space-x-3"></ul>
+            <button id="next-page" class="font-black text-2xl">
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <button id="sumbit-image" class="bg-indigo-400 rounded-md p-1.5 mx-5"> Submit </button>
- </aside>
-
-<div class="flex flex-col w-full h-[100vh]">
-  <div class="w-full h-[100vh] flex space-x-10 items-start">
-    <div id="gallery" class="grid grid-cols-4 grid-rows-2 gap-1">
+    <!-- footer -->
+    <div class="p-[8px] text-center text-white bg-indigo-900 font-bold">
+      Made with ♥ by Valery Retamoza
     </div>
-  </div>
-
-<!-- footer -->
-  <div class="bg-gray-200">
-    <div class="flex flex-row p-2 text-black gap-1 justify-center space-x-3">
-      <button id="last-page" class="font-black">Anterior</button>
-      <ul id="paginas" class="flex flex-row space-x-3"></ul>
-      <button id="next-page" class="font-black">Siguiente</button>
-    </div>
-  </div>
-</div>
-  <script src="../path/to/flowbite/dist/flowbite.js"></script>
-  <script type="module" src="./js/script.js"></script>
-</body>
+    <script src="../path/to/flowbite/dist/flowbite.js"></script>
+    <script type="module" src="./js/script.js"></script>
+  </body>
 </html>

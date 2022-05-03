@@ -39,7 +39,6 @@ selector.addEventListener('change', (e) => {
   }
 })
 
-
 submitButton.addEventListener('click', async (e) => {
   let title = imgTitle.value
   let desc = imgDesc.value
@@ -66,7 +65,6 @@ submitButton.addEventListener('click', async (e) => {
     renderImages(arrayImages, pagina, gallery)
     localStorage.setItem("images", JSON.stringify(arrayImages))
   }
-
 
   imgTitle.value = ''
   imgDesc.value = ''

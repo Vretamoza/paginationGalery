@@ -11,7 +11,7 @@ function createImage(url, title, desc){
 function createImageNode(url){
   let img = document.createElement('img')
   img.src = url
-  img.className = 'w-[300px] h-80'
+  img.className = 'w-[300px] h-[300px] rounded-md'
   return img
 }
 
@@ -39,7 +39,7 @@ function loadPages(arrayImages, paginas){
   let pages = (tam % 8 == 0)? Math.trunc(tam/8): Math.trunc(tam/8) + 1
   for (let i = 1; i <= pages; i++) {
     let page = document.createElement('li')
-    page.className = 'page'
+    page.className = 'page text-lg font-black'
     page.innerHTML = `<a href="#">${i}</a>`
     paginas.appendChild(page)
   }
